@@ -1,0 +1,38 @@
+.chat-toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // margin-top: 24px;
+    padding: 16px;
+    position: fixed;
+    left: 280px;
+    width: calc(100% - 312px);
+
+    @media screen and (max-width: 900px) {
+        position: fixed;
+        left: 50px;
+    }
+
+    .generate-button {
+        width: 120px;
+    }
+}
+
+.fox-select {
+    width: auto;
+    height: 38px;
+    border-radius: 8px;
+    border: none;
+    padding: 8px;
+    background: #2b2a39;
+    outline: none;
+    font-size: 16px;
+
+    option {
+        background: #2b2a39;
+        border: none;
+        border-radius: 8px;
+        padding: 4px;
+        outline: none;
+    }
+}

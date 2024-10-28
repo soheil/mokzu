@@ -1,0 +1,73 @@
+.response-content {
+    pre {
+        max-width: 520px;
+        overflow: auto;
+        border: none !important;
+        font-size: 14px !important;
+        @media screen and (max-width: 900px) {
+            max-width: 450px;
+        }
+    }
+    img {
+        max-width: 45%;
+        max-height: 90px;
+        border-radius: 10px;
+        padding: 2px;
+    }
+}
+
+.chat-response {
+    font-size: 16px;
+    line-height: 1.5;
+    // color: #333;
+    // white-space: pre-wrap; // Maintain new lines and spacing
+    padding: 20px;
+    // background-color: #f9f9f9;
+    border-radius: 5px;
+
+    ul, ol {
+        margin-top: 0;
+    }
+    @media screen and (max-width: 900px) {
+      padding: 2px 0;
+      line-height: 1.2;
+    }
+  }
+  
+  .chat-response h1,
+  .chat-response h2,
+  .chat-response h3,
+  .chat-response h4,
+  .chat-response h5,
+  .chat-response h6 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .chat-response p {
+    margin: 10px 0;
+
+    &:first-child {
+      margin-top: 0;
+      @media screen and (max-width: 900px) {
+        margin-top: 10px;
+      }
+    }
+  }
+  
+  .chat-response code {
+    background: #1b1b1b;
+    color: #f8f8f2;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+  
+  .custom-code-block {
+    background: #1b1b1b;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+  }

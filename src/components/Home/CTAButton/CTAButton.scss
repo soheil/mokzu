@@ -1,0 +1,32 @@
+.buy-button {
+    /* button */
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 8px;
+
+    width: 170px;
+    height: 40px;
+
+    background: #6F58F6;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    color: #fff;
+
+    &.gradient-button {
+        height: 48px;
+        /* Custom Gradient/custom animated 3 */
+        background: linear-gradient(81.19deg, #F460EE 14.81%, #4F31FF 99.47%);
+
+    }
+}

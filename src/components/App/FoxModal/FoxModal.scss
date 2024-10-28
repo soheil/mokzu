@@ -1,0 +1,27 @@
+.fox-modal {
+    position: fixed;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #42424eda;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    border-radius: 12px;
+    backdrop-filter: blur(2px);
+
+    .fox-modal-content {
+        width: 100%;
+        height: 100%;
+        max-width: 400px;
+        max-height: 600px;
+        padding: 16px;
+        background-color: #292446b4;
+        border-radius: 15px;
+        overflow: auto;
+    }
+}

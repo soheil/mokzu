@@ -1,0 +1,42 @@
+.content-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 16px;
+    max-width: 255px;
+    max-height: 376px;
+    text-align: left;
+    border: 1px solid rgb(231, 231, 231);
+
+    .content-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 8px;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    .content-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .content-contents {
+        margin-top: 0;
+        margin-bottom: 16px;
+        height: 72px;
+    }
+
+    img {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 15px;
+        object-fit: fill;
+
+        &.locksize {
+            width: 255px;
+            height: 253px;
+        }
+    }
+}

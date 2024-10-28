@@ -1,0 +1,35 @@
+.promptBox {
+    position: relative;
+
+    textarea {
+        height: 32px;
+    }
+}
+
+.optionsIcons {
+    display: flex;
+    margin-left: 8px;
+    margin-top: -4px;
+
+    p {
+        cursor: pointer;
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: grey;
+
+            path {
+                fill: gray;
+                transition: .3s ease all;
+            }
+        }
+
+        &:hover {
+            svg {
+                path {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}

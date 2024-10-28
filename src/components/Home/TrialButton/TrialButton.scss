@@ -1,0 +1,26 @@
+.trial-button {
+    /* button */
+    box-sizing: border-box;
+
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 12px;
+    gap: 8px;
+
+    min-width: 125px;
+    height: 40px;
+    font-weight: 500;
+
+    background: #f3f3f4;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    color: #000;
+}

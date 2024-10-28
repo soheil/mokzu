@@ -1,0 +1,36 @@
+.feature-card {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    // padding: 16px;
+    max-width: 234px;
+    max-height: 376px;
+    width: 100%;
+    height: 230px;
+    text-align: left;
+    border: 1px solid rgb(231, 231, 231);
+
+    .content-title {
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: #494656;
+    }
+
+    .content-contents {
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-size: 13px;
+    }
+    .content-title, .content-contents {
+        color: #494656;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    img {
+        width: 100%;
+        max-width: 100%;
+    }
+}

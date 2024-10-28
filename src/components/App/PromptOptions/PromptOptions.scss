@@ -1,0 +1,43 @@
+.promptOptions {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 8px;
+    padding-right: 8px;
+    flex-wrap: wrap;
+    position: absolute;
+    top: -65px;
+    background: inherit;
+    padding-bottom: 12px;
+    z-index: 11;
+
+    @media screen and (max-width: 616px) {
+        top: -135px;
+    }
+
+    .promptSelect {
+        font-size: 14px;
+        padding: 4px;
+    }
+
+    .promptOption {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-top: 8px;
+        position: relative;
+        font-size: 12px;
+        width: 25%;
+
+        .promptLabel {
+            font-size: 12px;
+            opacity: .75;
+            // position: absolute;
+            // top: -10px;
+        }
+    }
+  }
