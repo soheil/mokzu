@@ -11,7 +11,7 @@ import PromptLibrary from "./components/App/PromptLibrary/PromptLibrary";
 import ChatResponse from "./components/App/ChatResponse/ChatResponse";
 import { ToastContainer, ToastContentProps, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
- import JsxParser from 'react-jsx-parser';
+import JsxParser from 'react-jsx-parser';
 
 declare global {
   interface Window {
