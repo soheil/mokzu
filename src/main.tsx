@@ -1,8 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import App from './App.tsx';
 import Home from './Home.tsx';
-import Pricing from './Pricing.tsx';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -19,10 +17,6 @@ const router = createBrowserRouter([
     // element: <RootLayout />,
     children: [
       {
-        path: "/app",
-        element: <App />,
-      },
-      {
         index: true,
         element: <Home />,
       },
@@ -33,10 +27,6 @@ const router = createBrowserRouter([
       {
         path: "/privacy",
         element: <Privacy />,
-      },
-      {
-        path: "/pricing-plans",
-        element: <Pricing />,
       },
       {
         path: "/pricing",

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// App.tsx
 import React, { useEffect, useMemo, useCallback, useRef, useState } from "react";
 import { OpenAI } from "openai";
 import "./App.scss";
@@ -8,7 +7,6 @@ import MenuItem from "./components/App/MenuItem/MenuItem";
 import PromptInput from "./components/App/PromptInput/PromptInput";
 import FoxModal from "./components/App/FoxModal/FoxModal";
 import PromptLibrary from "./components/App/PromptLibrary/PromptLibrary";
-// import ChatToolbar from "./components/App/ChatToolbar/ChatToolbar";
 import ChatResponse from "./components/App/ChatResponse/ChatResponse";
 import { ToastContainer, ToastContentProps, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
