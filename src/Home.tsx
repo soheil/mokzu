@@ -36,7 +36,7 @@ const notify = (message: string | number | boolean | React.ReactElement<any, str
 }
 
 function App() { 
-  const [componentCode, setComponentCode] = useState();
+  const [componentCode, setComponentCode] = useState('');
   const [listGroup, setListGroup] = useState([1]);
   const [listGroupIsReady, setListGroupIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -278,7 +278,7 @@ function App() {
       const base = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
 
       const formData = new FormData();
-      image && formData.append('image', fileInputRef.current.files[0]);
+      fileInputRef.current && image && formData.append('image', fileInputRef.current.files[0]);
       formData.append('messages', JSON.stringify(messages));
       formData.append('model', selectedModel);
       formData.append('stream', 'true');
@@ -404,7 +404,7 @@ function App() {
   }, []);
 
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
   const fileInputRef = useRef(null);
 
   const handleImageChange = (event) => {
@@ -412,6 +412,7 @@ function App() {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
+      setComponentCode('')
     }
   };
 
@@ -422,7 +423,7 @@ function App() {
     handleSwitchChat(listNum);
     setMobileMenuActive(false);
     // document.querySelector('textarea')?.focus();
-    fileInputRef.current.click();
+    fileInputRef.current?.click();
   }
 
   useEffect(() => {
@@ -550,7 +551,7 @@ return (
 
           <div className="list-item"></div>
 
-          {image && (
+          {image.length > 0 && (
             <div className="image-card">
               <img src={image} alt="Selected" />
             </div>
@@ -590,7 +591,7 @@ return (
             handleSubmit={handleSubmit} />
 
           <div className="comp">
-            {componentCode && (
+            {componentCode.length > 0 && (
               <JsxParser jsx={componentCode} />
             )}
           </div>
