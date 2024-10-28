@@ -410,8 +410,8 @@ function App() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
@@ -594,8 +594,10 @@ return (
             handleSubmit={handleSubmit} />
 
           <div className="comp">
-            {componentCode.length > 0 && (
-              <JsxParser jsx={componentCode} />
+            {componentCode && (
+              <JsxParser
+                jsx={componentCode}
+              />
             )}
           </div>
         </div>
