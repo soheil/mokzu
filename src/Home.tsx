@@ -411,7 +411,7 @@ function App() {
 
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?[0];
+    const file = event.target.files ? event.target.files[0] : null;
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
