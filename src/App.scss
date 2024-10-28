@@ -13,6 +13,23 @@
   height: 100vh;
 }
 
+.hidden {
+    display: none;
+}
+.image-card {
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.image-card img {
+  max-width: 100%;
+  height: auto;
+}
+
 .promptBox {
   margin-bottom: 8px;
 }
@@ -221,7 +238,7 @@
       width: 100%;
       /*max-height: calc(100vh - 320px);*/
       max-height: calc(100vh - 225px);
-      height: 100vh;
+      height: 30vh;
       overflow: auto;
       display: flex;
       flex-direction: column;
@@ -240,6 +257,33 @@
         max-height: calc(100vh - 103px);
       }
     }
+
+    .comp {
+      position: relative;
+      width: 100%;
+      /*max-height: calc(100vh - 320px);*/
+      max-height: calc(100vh - 225px);
+      height: 40vh;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      margin-top: auto;
+      gap: 8px;
+      padding: 0 8px;
+      padding-right: 16px;
+      // margin: 16px;
+      margin-bottom: 0;
+      box-sizing: border-box;
+      background: #1D192B;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+
+      @media screen and (max-width: 720px) {
+        max-height: calc(100vh - 103px);
+      }
+    }
   }
   
   .promptBox {
@@ -252,7 +296,7 @@
     flex-direction: column;
     margin-bottom: 0;
     border-radius: 12px;
-    gap: 8px;
+    gap: px;
     border-top: 1px solid grey;
     border-top-left-radius: 0;
     border-top-right-radius: 0;

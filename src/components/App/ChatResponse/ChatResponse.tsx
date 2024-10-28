@@ -65,7 +65,7 @@ function ChatResponse({ item, index }: AppProps) {
     return (
         <div className="response-item chat-response">
             {item.role === 'assistant' ? (
-            <span className="chatbot-icon">AI</span>
+            <span className="chatbot-icon">MZ</span>
             ) : (
             <span className="chatbot-icon user-chaticon">ME</span>
             )}
