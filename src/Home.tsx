@@ -278,7 +278,9 @@ function App() {
       const base = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
 
       const formData = new FormData();
-      fileInputRef.current && image && formData.append('image', fileInputRef.current.files[0]);
+      if (image && fileInputRef.current && fileInputRef.current.files) {
+        formData.append('image', fileInputRef.current.files[0]);
+      }
       formData.append('messages', JSON.stringify(messages));
       formData.append('model', selectedModel);
       formData.append('stream', 'true');
@@ -405,7 +407,8 @@ function App() {
 
 
   const [image, setImage] = useState('');
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
