@@ -72,9 +72,9 @@ const PromptInput: React.FC<PromptInputProps> = ({ value, setValue, handleSubmit
         </svg>
       </button>
     </div>    
-    <p className="keyboard-tip hidden">
+    <p className="keyboard-tip">
     {/*<ShortcutDisplay letter="S" /> for System Message | */}
-    <ShortcutDisplay letter="K" /> for Prompt Library | Shift + return to add a new line
+    {/*<ShortcutDisplay letter="K" /> for Prompt Library | Shift + return to add a new line*/}
       <br />
 {/*      Chat operators: 
       <span className="operator"> = </span> fix grammar (e.g., 
