@@ -416,6 +416,7 @@ function App() {
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
       setComponentCode('')
+      handleSubmit('Here is my image');
     }
   };
 
@@ -425,7 +426,6 @@ function App() {
     localStorage.setItem('listgroup', JSON.stringify([...listGroup.sort((a,b) => b-a), listGroup.length + 1]));
     handleSwitchChat(listNum);
     setMobileMenuActive(false);
-    // document.querySelector('textarea')?.focus();
     fileInputRef.current?.click();
   }
 

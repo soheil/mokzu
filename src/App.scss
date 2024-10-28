@@ -16,6 +16,12 @@
 .hidden {
     display: none;
 }
+
+code {
+  font-size: 0.7rem !important;
+  line-height: 1 !important;
+}
+
 .image-card {
   border-radius: 8px;
   padding: 10px;
@@ -286,10 +292,6 @@
     }
   }
 
-  code {
-    font-size: 0.85;
-    line-height: 1;
-  }
   
   .promptBox {
     width: 100%;
