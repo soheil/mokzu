@@ -633,8 +633,8 @@ return (
                 </div>
               )}
               {index === 1 && image.length > 0 && (
-                <div className="image-card" style={{ maxHeight: '100px' }}>
-                  <img src={image} alt="Selected" />
+                <div className="image-card">
+                  <img src={image} alt="Selected" height="90" />
                 </div>
               )}
             </div>
