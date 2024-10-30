@@ -278,10 +278,6 @@ code {
       display: flex;
       flex-direction: column;
       margin-top: auto;
-      gap: 8px;
-      padding: 0 8px;
-      padding-right: 16px;
-      // margin: 16px;
       margin-bottom: 0;
       box-sizing: border-box;
       background: #1D192B;
@@ -293,6 +289,12 @@ code {
       @media screen and (max-width: 720px) {
         max-height: calc(100vh - 103px);
       }
+    }
+
+    .comp iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -480,13 +482,12 @@ textarea {
     align-items: center;
     padding: 8px 12px;
     gap: 8px;
-    width: calc(100% - 32px);
+    width: calc(100% - 26px);
     height: 40px;
-    margin: 16px;
+    margin: 12px;
     background: #6F58F6;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 12px;
-    margin-top: auto;
     cursor: pointer;
     text-decoration: none;
     color: #fff;
@@ -494,6 +495,9 @@ textarea {
     &:hover {
       color: #fff;
     }
+}
+.generate-button-sidebar, .secondary-btn-sidebar {
+  margin-top: auto;
 }
 
 .secondary-btn {
@@ -517,6 +521,10 @@ textarea {
     justify-content: center;
     background-color: #fff;
   }
+}
+
+.chat-history {
+  scroll-behavior: smooth;
 }
 
 .operator {

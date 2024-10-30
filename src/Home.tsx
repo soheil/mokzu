@@ -11,15 +11,10 @@ import PromptLibrary from "./components/App/PromptLibrary/PromptLibrary";
 import ChatResponse from "./components/App/ChatResponse/ChatResponse";
 import { ToastContainer, ToastContentProps, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import JsxParser from 'react-jsx-parser';
+import LoadingSpinner from './LoadingSpinner';
 
-declare global {
-  interface Window {
-    ttq: {
-      track: (event: string, options?: object) => void;
-    };
-  }
-}
+
+const backendBase = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
 
 const notify = (message: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | ((props: ToastContentProps<unknown>) => React.ReactNode) | null | undefined, type: string) => {
   if (type === 'error') {
@@ -37,6 +32,9 @@ const notify = (message: string | number | boolean | React.ReactElement<any, str
 
 function App() { 
   const [componentCode, setComponentCode] = useState('');
+  const [isGenerated, setIsGenerated] = useState(false);
+  const iframeRef = useRef<HTMLIframeElement>(null);
+  const copyBtnRef = useRef<HTMLButtonElement>(null);
   const [listGroup, setListGroup] = useState([1]);
   const [listGroupIsReady, setListGroupIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -56,7 +54,7 @@ function App() {
   const latestPage: number = pages && pages[pages.length - 1];
 
   const [chatGroup, setChatGroup] = useState(latestPage);
-  const rawChat = localStorage.getItem(`aichat-history-${chatGroup}`);
+  const rawChat = '';//localStorage.getItem(`aichat-history-${chatGroup}`);
   const chatHistory = rawChat ? JSON.parse(rawChat) : [{
     role: "assistant",
     content: "Upload a design mock to auto-generate code for a React component",
@@ -177,8 +175,28 @@ function App() {
   }, [openai]);
 
   useEffect(() => {
-    handleAddImage()
-  }, []);
+    (async () => {
+      if (componentCode === '') return;
+      setIsGenerated(false);
+      const response = await fetch(backendBase + '/mokzu-api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({code: componentCode}),
+      });
+
+      console.log('generated component on the backend');
+      if (iframeRef.current) {
+      console.log('>>>generated component on the backend');
+        const random = '?a=' + (Math.random() % 10000).toString();
+        iframeRef.current.src = `${backendBase}/mokzu-api/sites/app1/${random}`;
+        setIsGenerated(true);
+
+        console.log(iframeRef.current.src);
+      }
+    })();
+  }, [componentCode]);
 
   useEffect(() => {
     if (!shouldSpeakResponse || response.length < 2) return;
@@ -275,10 +293,9 @@ function App() {
     setResponse(prestreamResponse);
     try {
       setLoading(true);
-      const base = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
-
       const formData = new FormData();
-      if (image && fileInputRef.current && fileInputRef.current.files) {
+
+      if (fileInputRef.current && fileInputRef.current.files) {
         formData.append('image', fileInputRef.current.files[0]);
       }
       formData.append('messages', JSON.stringify(messages));
@@ -295,7 +312,7 @@ function App() {
         //   stream: true,
         // })
 
-      const responseStream = await fetch(base + '/mokzu-api/oa/chat/completions', {
+      const responseStream = await fetch(backendBase + '/mokzu-api/oa/chat/completions', {
         method: 'POST',
         body: formData,
       });
@@ -382,8 +399,7 @@ function App() {
       e.preventDefault();
       handleSubmit();
     }
-    e.target.style.height = 'inherit';
-    e.target.style.height = `${e.target.scrollHeight - 45}px`;
+    // e.target.style.height = `${e.target.scrollHeight - 45}px`;
   }
 
   const handleKeyDownApp = (e: any) => {
@@ -421,6 +437,34 @@ function App() {
   };
 
   const handleAddImage = () => {
+//     setComponentCode(`
+// import logo from './logo.svg';
+// import './App.css';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <p>
+//           Edit <code>src/App.js</code> and SAVE to reload.
+//         </p>
+//         <a
+//           className="App-link bg-red m-8 color-blue p-8"
+//           href="https://reactjs.org"
+//           target="_blank"
+//           rel="noopener noreferrer"
+//         >
+//           Learn React
+//         </a>
+//       </header>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// `);
+//     return;
     const listNum = listGroup.length + 1;
     setListGroup([...listGroup.sort((a,b) => b-a), listNum])
     localStorage.setItem('listgroup', JSON.stringify([...listGroup.sort((a,b) => b-a), listGroup.length + 1]));
@@ -431,7 +475,9 @@ function App() {
 
   useEffect(() => {
     if (chatHistoryRef.current) {
-      chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
+      setTimeout(() => {
+        chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
+      }, 300);
     }
   }, [response]);
 const TopIcon = () => <div
@@ -505,16 +551,19 @@ const BottomIcon = () => <div
     checkOverflow();
   }, [response]);
 
-  useEffect(() => {
-    if (window.ttq) {
-      window.ttq.track('AddToCart', {
-        contents: [{
-          content_id: '301', content_name: 'app', quantity: 1, price: 1
-        }],
-        content_type: 'product', value: 1, currency: 'USD'
+  const handleCopy = (code) => {
+    copyBtnRef.current.innerHTML = '✅';
+    navigator.clipboard.writeText(code)
+      .then(() => {
+        setTimeout(() => {
+          copyBtnRef.current.innerHTML = '📋';
+        }, 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy text: ', err);
       });
-    }
-  }, []);
+  };
+
 
 return (
     <div className="container chat-container">
@@ -567,7 +616,7 @@ return (
           onChange={handleImageChange}
           className="hidden"
         />
-        <div className="generate-button" onClick={() => handleAddImage()}>
+        <div className="generate-button generate-button-sidebar" onClick={() => handleAddImage()}>
           <span>Add Image</span>
         </div>
       </div>
@@ -576,7 +625,19 @@ return (
         <div className="chat-history-content" ref={chatHistoryRef}>
           <TopIcon />
           {response.map((item: any, index: number) => (
-            <ChatResponse key={`chat-${index}`} item={item} index={index} />
+            <div key={`chat-${index}`}>
+              <ChatResponse item={item} index={index} />
+              {index === 0 && (
+                <div className="generate-button" onClick={() => handleAddImage()}>
+                  <span>Add Image</span>
+                </div>
+              )}
+              {index === 1 && image.length > 0 && (
+                <div className="image-card" style={{ maxHeight: '100px' }}>
+                  <img src={image} alt="Selected" />
+                </div>
+              )}
+            </div>
           ))}
           {loading && (
             <div className="loading-dots">
@@ -594,10 +655,31 @@ return (
             handleSubmit={handleSubmit} />
 
           <div className="comp">
-            {componentCode && (
-              <JsxParser
-                jsx={componentCode}
-              />
+            {componentCode.length > 0 && (
+              <>
+                <iframe
+                  style={{ display: isGenerated ? 'block' : 'none' }} ref={iframeRef}
+                  allowtransparency="true"
+                />
+                {isGenerated ? (
+                  <button
+                    ref={copyBtnRef}
+                    onClick={() => handleCopy(componentCode)}
+                    style={{
+                      position: 'absolute',
+                      top: '10px',
+                      right: '10px',
+                      padding: '5px',
+                      cursor: 'pointer',
+                    }}
+                    aria-label="Copy to clipboard"
+                  >
+                    📋
+                  </button>
+                ) : (
+                  <LoadingSpinner />
+                )}
+              </>
             )}
           </div>
         </div>

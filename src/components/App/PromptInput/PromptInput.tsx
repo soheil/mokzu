@@ -53,13 +53,14 @@ const PromptInput: React.FC<PromptInputProps> = ({ value, setValue, handleSubmit
       </div>
       <textarea
         placeholder="Message AI..."
+        style={{ overflowY: 'hidden' }}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         autoFocus
         onKeyDown={handleKeyDown}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onClick={(e:any) => {handleKeyDown(e)}}
-      ></textarea>
+      />
       <button className="prompt-button" disabled={value.length === 0} onClick={constructMessage}>
         <svg
           width="20"
@@ -75,7 +76,6 @@ const PromptInput: React.FC<PromptInputProps> = ({ value, setValue, handleSubmit
     <p className="keyboard-tip">
     {/*<ShortcutDisplay letter="S" /> for System Message | */}
     {/*<ShortcutDisplay letter="K" /> for Prompt Library | Shift + return to add a new line*/}
-      <br />
 {/*      Chat operators: 
       <span className="operator"> = </span> fix grammar (e.g., 
       <span> "=i can haz chiz?"</span>), 

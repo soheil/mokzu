@@ -19,7 +19,7 @@ const parseContent = (content: string, parentIndex: any) => {
 
       if (codeBlockMatch) {
         const [firstLine, ...rest] = codeBlockMatch[1].split(' ');
-        const language = firstLine.split('\n')[0];
+        const [language, ...restFirstLine] = firstLine.split('\n');
         return (<div key={`c-${index}`}>
         <p>{language}</p>
         <SyntaxHighlighter
@@ -27,7 +27,7 @@ const parseContent = (content: string, parentIndex: any) => {
             style={dark}
             customStyle={{ padding: '10px', borderRadius: '5px', background: '#1b1b1b' }}
           >
-            {rest.join(' ')}
+            {restFirstLine.join(' ') + ' ' + rest.join(' ')}
           </SyntaxHighlighter>
         </div>
         );
