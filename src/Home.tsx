@@ -33,7 +33,7 @@ const notify = (message: string | number | boolean | React.ReactElement<any, str
 function App() { 
   const [componentCode, setComponentCode] = useState('');
   const [isGenerated, setIsGenerated] = useState(false);
-  const iframeRef = useRef<HTMLIframeElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const copyBtnRef = useRef<HTMLButtonElement>(null);
   const [listGroup, setListGroup] = useState([1]);
   const [listGroupIsReady, setListGroupIsReady] = useState(false);
@@ -659,7 +659,6 @@ return (
               <>
                 <iframe
                   style={{ display: isGenerated ? 'block' : 'none' }} ref={iframeRef}
-                  allowtransparency="true"
                 />
                 {isGenerated ? (
                   <button

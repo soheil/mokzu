@@ -16,6 +16,10 @@
     }
 }
 
+.response-content, .response-content pre {
+  overflow-x: hidden !important;
+}
+
 .chat-response {
     font-size: 16px;
     line-height: 1.5;
