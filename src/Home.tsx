@@ -634,7 +634,7 @@ return (
               )}
               {index === 1 && image.length > 0 && (
                 <div className="image-card">
-                  <img src={image} alt="Selected" height="90" />
+                  <img src={image} alt="Selected" />
                 </div>
               )}
             </div>
