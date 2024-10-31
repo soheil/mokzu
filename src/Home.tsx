@@ -389,7 +389,7 @@ function App() {
       });
 
     } catch (error: any) {
-      notify(`Error submitting response: ${error.message}`, 'error');
+      // notify(`Error submitting response: ${error.message}`, 'error');
     }
 
     setFinishedResponding(true);
