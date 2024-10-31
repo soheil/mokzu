@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.5",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "@visx/visx": "^3.11.0",
     "axios": "^1.6.8",
     "bowser": "^2.11.0",
     "compression": "^1.7.4",

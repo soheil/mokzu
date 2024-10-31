@@ -12,6 +12,7 @@ import ChatResponse from "./components/App/ChatResponse/ChatResponse";
 import { ToastContainer, ToastContentProps, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './LoadingSpinner';
+import Graph from './Graph';
 
 
 const backendBase = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
@@ -564,6 +565,11 @@ const BottomIcon = () => <div
       });
   };
 
+  const componentsData = [
+    { component: 'ComponentA', linesOfCode: 123 },
+    { component: 'ComponentB', linesOfCode: 456 },
+    { component: 'ComponentC', linesOfCode: 789 },
+  ];
 
 return (
     <div className="container chat-container">
@@ -603,6 +609,7 @@ return (
 
           <div className="list-item"></div>
 
+        <Graph width="280" height="300" />
           {image.length > 0 && (
             <div className="image-card">
               <img src={image} alt="Selected" />
