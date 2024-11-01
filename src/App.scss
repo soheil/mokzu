@@ -144,6 +144,10 @@ code {
     }
   }
 
+    .menu-icon img {
+      height: 35px;
+    }
+
   .chat-sidebar {
     display: flex;
     flex-direction: column;
@@ -185,7 +189,7 @@ code {
     }
 
     .logo-icon img {
-      height: 35px;
+      height: 65px;
     }
 
     .chat-header {
@@ -210,11 +214,11 @@ code {
         display: block;
         border-radius: 50%;
         width: auto;
-        height: 35px;
+        height: 65px;
         // background-color: #fff;
         img {
           width: auto;
-          height: 35px;
+          height: 65px;
         }
       }
     }

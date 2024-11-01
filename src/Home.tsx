@@ -591,7 +591,7 @@ return (
       <span className="menu-icon">
         <div className="logo-header">
           <a href="/" className="logo-icon"><img src={GenericLogo} /></a>
-          <a href="/">mokzu</a>
+          <a href="/" style={{ verticalAlign: 'super', color: 'white' }}>Mokzu</a>
         </div>
       </span>
       <div className={`chat-sidebar mobile-menu ${mobileMenuActive ? 'menu-active' : ''}`}>
