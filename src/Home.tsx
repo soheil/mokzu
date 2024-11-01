@@ -662,7 +662,7 @@ return (
             handleSubmit={handleSubmit} />
 
           <div className="comp">
-            {componentCode.length > 0 && (
+            {componentCode.length > 0 ? (
               <>
                 <iframe
                   style={{ display: isGenerated ? 'block' : 'none' }} ref={iframeRef}
@@ -686,6 +686,8 @@ return (
                   <LoadingSpinner />
                 )}
               </>
+            ) : (
+              <img src="/snap1.jpg" />
             )}
           </div>
         </div>
