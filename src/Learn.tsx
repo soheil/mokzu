@@ -12,6 +12,7 @@ import { ToastContainer, ToastContentProps, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './LoadingSpinner';
 import Graph from './Graph';
+import Mermaid from "react-mermaid2"
 
 const backendBase = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
 const notify = (message: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | ((props: ToastContentProps<unknown>) => React.ReactNode) | null | undefined, type: string) => {
@@ -26,7 +27,8 @@ const notify = (message: string | number | boolean | React.ReactElement<any, str
   toast.error(message);
 }
 
-function App() { 
+function Learn() { 
+  const [step, setStep] = useState(0);
   const [componentCode, setComponentCode] = useState('');
   const [isGenerated, setIsGenerated] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -35,6 +37,7 @@ function App() {
   const [listGroupIsReady, setListGroupIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const rawListGroup = localStorage.getItem(`listgroup`);
+  const mermaidRef = useRef(null);
 
   if(rawListGroup && listGroup.length === 1 && !listGroupIsReady) {
     const parsedListGroup = JSON.parse(rawListGroup).sort((a: number,b: number) => b-a);
@@ -51,7 +54,7 @@ function App() {
   const rawChat = '';//localStorage.getItem(`aichat-history-${chatGroup}`);
   const chatHistory = rawChat ? JSON.parse(rawChat) : [{
     role: "assistant",
-    content: "Upload a design mock to auto-generate code for a React component",
+    content: "Ask how to solve a coding problem or choose from one below.",
   }];
 
   const [response, setResponse] = useState(chatHistory);
@@ -189,6 +192,43 @@ function App() {
     })();
   }, [componentCode]);
 
+
+  useEffect(() => {
+    const smoothScrollToEnd = () => {
+      const element = document.querySelector('.comp');
+      console.log(element, '-------');
+
+      if (!element) return;
+      const scrollDuration = 2000; // Define how long the scroll should take (in ms)
+      const startPosition = element.scrollTop;
+
+      console.log({startPosition});
+      const targetPosition = element.scrollHeight;
+      const distance = targetPosition - startPosition;
+      let startTime = null;
+
+      const animation = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, startPosition, distance, scrollDuration);
+        element.scrollTop = run;
+        if (run < distance * 0.8) requestAnimationFrame(animation);
+        console.log({run, distance});
+      };
+
+      const easeInOutQuad = (t, b, c, d) => {
+        t /= 9000 / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+      };
+
+      requestAnimationFrame(animation);
+    };
+
+    if (componentCode.length > 0) setTimeout(smoothScrollToEnd, 500);
+  }, [componentCode]);
+
   useEffect(() => {
     if (!shouldSpeakResponse || response.length < 2) return;
 
@@ -220,29 +260,22 @@ function App() {
 
   const addSystemMessageIfNeeded = (messages: any, promptValue: any) => {
     let msg = "";
-    switch(promptValue[0]) {
-      case ".":
-        msg = "give me very short and concise answers and ignore all the niceties that you are programmed with";
+    switch(step) {
+      case 0:
+        msg = "output mermaid code block followed by an explanation";
         break;
-      case "=":
-        msg = "fix any garammar in the user prompt using excellent English, keep the tone of the input";
-        break;
-      case "/":
-        msg = `add the follow to add a lot of emotions: ellipses (...), question marks, dashes (—), quotation marks, parentheses (), capitalization, commas (,), semantic emphasis, repetition, no emojis`;
-        setShouldSpeakResponse(true);
-        break;
-      case "'":
-        msg = "respond only with Generating image..."
-        generateImage(promptValue);
+      case 1:
+        msg = "";
         break;
       default:
         return promptValue;
     }
+
     messages.push({
       role: "system",
       content: msg,
     });
-    return promptValue.slice(1);
+    return promptValue;
   };
 
   const handleSubmit = async (finalValue?: string) => {
@@ -275,10 +308,6 @@ function App() {
     try {
       setLoading(true);
       const formData = new FormData();
-
-      if (fileInputRef.current && fileInputRef.current.files) {
-        formData.append('image', fileInputRef.current.files[0]);
-      }
       formData.append('messages', JSON.stringify(messages));
       formData.append('model', selectedModel);
       formData.append('stream', 'true');
@@ -339,10 +368,10 @@ function App() {
             const matches = tempContent.match(/```\w{0,15}\n(.*?)```/s)
             if (matches) {
               setComponentCode(matches[1]);
+              setStep(1)
               console.log("Captured Group:", matches[1]);
             }
             setResponse(updatedResponse);
-            localStorage.setItem(`aichat-history-${chatGroup}`, JSON.stringify(updatedResponse));
           }
         }
       }
@@ -380,23 +409,14 @@ function App() {
 
   const [image, setImage] = useState('');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files ? event.target.files[0] : null;
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setImage(imageUrl);
-      setComponentCode('')
-      handleSubmit('Here is my image');
-    }
-  };
-
-  const handleAddImage = () => {
+  const handleAskQuestion = (question) => {
     const listNum = listGroup.length + 1;
     setListGroup([...listGroup.sort((a,b) => b-a), listNum])
     localStorage.setItem('listgroup', JSON.stringify([...listGroup.sort((a,b) => b-a), listGroup.length + 1]));
     handleSwitchChat(listNum);
     setMobileMenuActive(false);
-    fileInputRef.current?.click();
+    setComponentCode('')
+    handleSubmit(question);
   }
 
   useEffect(() => {
@@ -541,16 +561,6 @@ return (
             </div>
           )}
         </div>
-        <input
-          type="file"
-          accept="image/*"
-          ref={fileInputRef}
-          onChange={handleImageChange}
-          className="hidden"
-        />
-        <div className="generate-button generate-button-sidebar" onClick={() => handleAddImage()}>
-          <span>Add Image</span>
-        </div>
       </div>
       <div className="chat-history" onClick={() => setMobileMenuActive(false)}>
 
@@ -560,8 +570,13 @@ return (
             <div key={`chat-${index}`}>
               <ChatResponse item={item} index={index} />
               {index === 0 && (
-                <div className="generate-button" onClick={() => handleAddImage()}>
-                  <span>Add Image</span>
+                <div className="row">
+                  <div className="generate-button" onClick={() => handleAskQuestion('Median of Two Sorted Arrays')}>
+                    <span>Median of Two Sorted Arrays</span>
+                  </div>
+                  <div className="generate-button" onClick={() => handleAskQuestion('Merge k Sorted Lists')}>
+                    <span>Merge k Sorted Lists</span>
+                  </div>
                 </div>
               )}
               {index === 1 && image.length > 0 && (
@@ -586,33 +601,9 @@ return (
             handleKeyDown={handleKeyDown}
             handleSubmit={handleSubmit} />
 
-          <div className="comp">
-            {componentCode.length > 0 ? (
-              <>
-                <iframe
-                  style={{ display: isGenerated ? 'block' : 'none' }} ref={iframeRef}
-                />
-                {isGenerated ? (
-                  <button
-                    ref={copyBtnRef}
-                    onClick={() => handleCopy(componentCode)}
-                    style={{
-                      position: 'absolute',
-                      top: '10px',
-                      right: '10px',
-                      padding: '5px',
-                      cursor: 'pointer',
-                    }}
-                    aria-label="Copy to clipboard"
-                  >
-                    📋
-                  </button>
-                ) : (
-                  <LoadingSpinner />
-                )}
-              </>
-            ) : (
-              <img src="/snap1.jpg" />
+          <div className="comp merm">
+            {componentCode.length > 0 && (
+              <Mermaid chart={componentCode} />
             )}
           </div>
         </div>
@@ -625,4 +616,4 @@ return (
   );
 }
 
-export default App;
+export default Learn;

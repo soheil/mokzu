@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import Home from './Home.tsx';
+import Learn from './Learn.tsx';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -8,7 +9,6 @@ import {
 import Terms from './Terms.tsx';
 import Privacy from './Privacy.tsx';
 import ExternalRedirect from './components/ExternalRedirect.tsx';
-// import RootLayout from './components/RootLayout';
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -19,6 +19,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/learn",
+        element: <Learn />,
       },
       {
         path: "/terms",

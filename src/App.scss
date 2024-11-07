@@ -300,6 +300,11 @@ code {
       width: 100%;
       height: 100%;
     }
+
+    .comp.merm {
+      background-color: rgba(1,1,1,0.2);
+      text-align: center;
+    }
   }
 
   
@@ -500,6 +505,12 @@ textarea {
       color: #fff;
     }
 }
+
+.row .generate-button {
+  width: calc(45% - 26px);
+  display: inline-flex;
+}
+
 .generate-button-sidebar, .secondary-btn-sidebar {
   margin-top: auto;
 }
