@@ -16,6 +16,6 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run build
-        run: npm run build
+        run: node --max-old-space-size=2048 $(which npm) run build
       - name: Copy build files for nginx to serve
         run: cp -r dist/* /var/www/html/mokzu/
