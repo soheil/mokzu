@@ -355,6 +355,7 @@ function Learn() {
               if (content) {
                 tempContent += content;  // Accumulate content
               }
+              
             } catch (err) {
               console.error('Parsing error:', err);
             }
@@ -375,7 +376,7 @@ function Learn() {
           }
         }
       }
-      
+
       window.gtag('event', 'app_response', {
         event_category: 'App Interaction',
         event_label: 'Response Generated',
