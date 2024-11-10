@@ -12,7 +12,7 @@ import { ToastContainer, ToastContentProps, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './LoadingSpinner';
 import Graph from './Graph';
-import { useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 
 const backendBase = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
 const notify = (message: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | ((props: ToastContentProps<unknown>) => React.ReactNode) | null | undefined, type: string) => {
@@ -27,6 +27,11 @@ const notify = (message: string | number | boolean | React.ReactElement<any, str
   toast.error(message);
 }
 
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
 function App() { 
   const [componentCode, setComponentCode] = useState('');
   const [isGenerated, setIsGenerated] = useState(false);
@@ -37,7 +42,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const rawListGroup = localStorage.getItem(`listgroup`);
 
-  const { exti } = useParams();
+  const query = useQuery();
+  const exti = query.get('exti');
 
   if(rawListGroup && listGroup.length === 1 && !listGroupIsReady) {
     const parsedListGroup = JSON.parse(rawListGroup).sort((a: number,b: number) => b-a);
