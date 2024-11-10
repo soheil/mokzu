@@ -12,6 +12,7 @@ import { ToastContainer, ToastContentProps, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './LoadingSpinner';
 import Graph from './Graph';
+import { useParams } from 'react-router-dom';
 
 const backendBase = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
 const notify = (message: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | ((props: ToastContentProps<unknown>) => React.ReactNode) | null | undefined, type: string) => {
@@ -35,6 +36,8 @@ function App() {
   const [listGroupIsReady, setListGroupIsReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const rawListGroup = localStorage.getItem(`listgroup`);
+
+  const { exti } = useParams();
 
   if(rawListGroup && listGroup.length === 1 && !listGroupIsReady) {
     const parsedListGroup = JSON.parse(rawListGroup).sort((a: number,b: number) => b-a);
@@ -278,6 +281,9 @@ function App() {
 
       if (fileInputRef.current && fileInputRef.current.files) {
         formData.append('image', fileInputRef.current.files[0]);
+      }
+      if (exti) {
+        formData.append('exti', exti);
       }
       formData.append('messages', JSON.stringify(messages));
       formData.append('model', selectedModel);
