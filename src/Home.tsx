@@ -27,7 +27,6 @@ const notify = (message: string | number | boolean | React.ReactElement<any, str
   toast.error(message);
 }
 
-
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -96,7 +95,7 @@ function App() {
 
   useEffect(() => {
     if (exti) {
-      setImage(exti);
+      setImage(`/mokzu-api/uploads/${exti}`);
       handleSubmit('Here is my image');
     }
   }, [exti]);
