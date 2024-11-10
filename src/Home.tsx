@@ -12,7 +12,7 @@ import { ToastContainer, ToastContentProps, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './LoadingSpinner';
 import Graph from './Graph';
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const backendBase = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
 const notify = (message: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | ((props: ToastContentProps<unknown>) => React.ReactNode) | null | undefined, type: string) => {
