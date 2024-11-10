@@ -88,6 +88,13 @@ function App() {
     document.title = `Mokzu – Mock ${page || '1'}`;
   }
 
+  useEffect(() => {
+    if (exti) {
+      setImage(exti);
+      handleSubmit('Here is my image');
+    }
+  }, [exti]);
+
   const generateImage = (promptValue: any) => {
     const func = async () => {
       const resp = await openai.images.generate({
