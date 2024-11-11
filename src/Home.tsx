@@ -630,7 +630,7 @@ return (
                 )}
               </>
             ) : (
-              <img src="/snap1.jpg" />
+              <img src="/snap1.jpg" style={{ display: 'none' }} />
             )}
           </div>
         </div>
