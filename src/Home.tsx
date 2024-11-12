@@ -196,7 +196,8 @@ function App() {
       if (iframeRef.current) {
       console.log('>>>generated component on the backend');
         const random = '?a=' + (Math.random() % 10000).toString();
-        iframeRef.current.src = `${backendBase}/mokzu-api/sites/app1/${random}`;
+        // iframeRef.current.src = `${backendBase}/mokzu-api/sites/app1/${random}`;
+        iframeRef.current.src = `${backendBase}/mokzu-app1/${random}`;
         setIsGenerated(true);
 
         console.log(iframeRef.current.src);
