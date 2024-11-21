@@ -500,6 +500,49 @@ textarea {
   color: #b9b9b9;
 }
 
+.sample-mock {
+  font-size: 13px;
+  color: #ccc;
+}
+.sample-mock span, p {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.sample-mock span {
+  margin-bottom: 5px;
+}
+.text-or-line {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #999;
+}
+.text-or-line::before,
+.text-or-line::after {
+  content: "";
+  flex: 1;
+  border-top: 0.5px solid #999;
+  margin: 0 10px;
+}
+
+.sample-mock .image-card button {
+  width: 30%;
+  padding: 0;
+  margin: 0 1px;
+  align-items: center;
+  background: none ;
+  overflow: hidden;
+  border-radius: 2px;
+  margin: -3px 0 0 1px;
+}
+.sample-mock .image-card img {
+  object-fit: fill;
+  object-position: center;
+  display: block;
+}
+
 .get-started {
   display: flex;
   flex-direction: row;

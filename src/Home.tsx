@@ -15,6 +15,15 @@ import LoadingSpinner from './LoadingSpinner';
 // import Graph from './Graph';
 import { useLocation } from 'react-router-dom';
 
+const SAMPLES = [
+  'i1732224325886.png',
+  'i1732231823673.png',
+  'i1732232274243.png',
+  'i1732232393245.png',
+  'i1732232793938.png',
+  'i1732232937891.png',
+]
+
 const backendBase = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
 const notify = (message: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | ((props: ToastContentProps<unknown>) => React.ReactNode) | null | undefined, type: string) => {
   if (type === 'error') {
@@ -630,10 +639,22 @@ return (
               Mokzu turns design mocks into functional React components effortlessly. Simply capture any area on your screen and Mokzu converts it into code. Streamline your design-to-code process and boost productivity.
             </p>
           </div>
-          {image.length > 0 && (
+          {image.length > 0 ? (
             <div className="image-card">
               Mock used
               <img src={image} alt="Selected" />
+            </div>
+          ) : (
+            <div className="sample-mock">
+              <div className="image-card">
+                <span>Choose a sample mock</span>
+                {SAMPLES.map((sample) => (
+                  <button key={sample} onClick={() => setImage(`/mokzu-api/uploads/${sample}`)}>
+                    <img src={`https://mokzu.com/mokzu-api/uploads/${sample}`} alt={`Sample mock ${sample}`} />
+                  </button>
+                ))}
+              </div>
+              <p className="text-or-line">or upload your own</p>
             </div>
           )}
         </div>
