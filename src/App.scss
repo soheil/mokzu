@@ -482,9 +482,9 @@ textarea {
 }
 
 .ext-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 .ext-button button {
   background-color: rgb(59, 130, 246);
@@ -498,7 +498,15 @@ textarea {
 }
 .intro-text p {
   color: #cfd1d3;
-  padding: 4px;
+}
+
+.get-started {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: auto;
+  font-size: 11px;
+  font-family: monospace;
 }
 
 .generate-button, .secondary-btn {
