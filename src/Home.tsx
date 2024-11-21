@@ -509,7 +509,7 @@ const BottomIcon = () => <div
           return `| ${totalPadding}${line}${padding}${totalPadding} |`;
      });
 
-     return ['/*', horizontalBorder, ...boxedLines, horizontalBorder, '*/'].join('\n');
+     return ['/*', horizontalBorder, ...boxedLines, horizontalBorder, '*/', ''].join('\n');
   }
 
   const handleCopy = (code) => {
