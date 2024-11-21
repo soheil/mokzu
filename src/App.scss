@@ -271,9 +271,6 @@ code {
         max-height: calc(100vh - 103px);
       }
     }
-    .comp {
-      height: 50vh !important;
-    }
 
 
     .comp {
@@ -281,7 +278,7 @@ code {
       width: 100%;
       /*max-height: calc(100vh - 320px);*/
       max-height: calc(100vh - 225px);
-      height: 40vh;
+      height: 50vh;
       overflow: auto;
       display: flex;
       flex-direction: column;

@@ -552,18 +552,17 @@ return (
             <MenuItem page={val} />
           </div>))}
 
-          <div className="list-item"></div>
-
+          {/*<div className="list-item"></div>*/}
           {/* <Graph width="280" height="300" /> */}
 
-          <a href="https://chromewebstore.google.com/detail/mokzu/bcmfikdjbbnmdpiajbckbkbnalbibkjc" target="_blank" className="mt-4">
+          <a className="ext-button" href="https://chromewebstore.google.com/detail/mokzu/bcmfikdjbbnmdpiajbckbkbnalbibkjc" target="_blank">
             <button className="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
-               Get Mokzu Chrome Extension
+               Get the Chrome Extension
             </button>
           </a>
-          <div class="p-4 rounded-lg shadow-md">
-            <h2 class="text-xl font-bold mb-2 text-gray-200">Transform Mockups into Code</h2>
-            <p class="text-sm text-gray-100">
+          <div className="p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-bold mb-2 text-gray-200">Transform Mockups into Code</h2>
+            <p className="text-sm text-gray-100">
               Mokzu turns design mocks into functional React components effortlessly. Simply capture any area on your screen and Mokzu converts it into code. Streamline your design-to-code process and boost productivity.
             </p>
           </div>
