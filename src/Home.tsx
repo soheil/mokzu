@@ -523,10 +523,12 @@ const BottomIcon = () => <div
               ? `require('${moduleName}').${name}`
               : `require('${moduleName}')`;
             return `
-    let ${name} = () => {};
-    try {
-      ${name} = ${requireStatement};
-    } catch (e) {};`;
+let ${name};
+try {
+  ${name} = ${requireStatement};
+} catch (e) {};
+${name} = ${name} || (() => {});
+`;
          });
          return replacements.join('\n');
       }
