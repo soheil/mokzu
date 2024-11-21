@@ -481,6 +481,25 @@ textarea {
   background: rgba(255, 255, 255, 0.16);
 }
 
+.ext-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.ext-button button {
+  background-color: rgb(59, 130, 246);
+}
+
+.intro-text {
+  padding: 4px;
+}
+.intro-text h2 {
+  color: rgb(229, 231, 235);
+}
+.intro-text p {
+  color: rgb(243, 244, 246)
+}
+
 .generate-button, .secondary-btn {
     /* button */
     box-sizing: border-box;
