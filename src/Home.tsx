@@ -190,7 +190,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({code: componentCode}),
+        body: JSON.stringify({code: errorProof(componentCode)}),
       });
 
       console.log('generated component on the backend');
