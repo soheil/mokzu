@@ -298,6 +298,14 @@ function App() {
       }
       if (exti) {
         formData.append('exti', exti);
+      } else {
+        const now = Date.now();
+        formData.append('now', now);
+        window.history.replaceState(
+          {}, // state object
+          '', // title
+          `?now=${now}` // new URL
+        );
       }
       formData.append('messages', JSON.stringify(messages));
       formData.append('model', selectedModel);
