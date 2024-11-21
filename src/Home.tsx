@@ -512,6 +512,27 @@ const BottomIcon = () => <div
      return ['/*', horizontalBorder, ...boxedLines, horizontalBorder, '*/', ''].join('\n');
   }
 
+  function errorProof(content) {
+    return content.replace(
+      /import\s+(\{?\s*([A-Za-z0-9_\s,]+)\s*\}?)\s+from\s+['"]([^'"]+)['"];?/g,
+      (match, fullImports, imports, moduleName) => {
+         const importList = imports.split(',').map(name => name.trim());
+         const isNamedImport = fullImports.startsWith('{');
+         const replacements = importList.map(name => {
+            const requireStatement = isNamedImport
+              ? `require('${moduleName}').${name}`
+              : `require('${moduleName}')`;
+            return `
+    let ${name} = () => {};
+    try {
+      ${name} = ${requireStatement};
+    } catch (e) {};`;
+         });
+         return replacements.join('\n');
+      }
+    );
+  }
+
   const handleCopy = (code) => {
     copyBtnRef.current.innerHTML = '✅';
     const install_comment = `
@@ -530,7 +551,7 @@ npm i tailwindcss @remixicon/react daisyui
 `;
 
     const asciiBox = createAsciiBox(install_comment);
-    navigator.clipboard.writeText(asciiBox + code)
+    navigator.clipboard.writeText(asciiBox + errorProof(code))
       .then(() => {
         setTimeout(() => {
           copyBtnRef.current.innerHTML = '📋';
