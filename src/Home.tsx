@@ -300,11 +300,13 @@ function App() {
         formData.append('exti', exti);
       } else {
         const now = Date.now();
-        formData.append('now', now);
+        const pre_exti = `i${now}.png`;
+        formData.append('pre_exti', pre_exti);
+        // this won't redirect, this is for user to copy addressbar url
         window.history.replaceState(
           {}, // state object
           '', // title
-          `?now=${now}` // new URL
+          `?exti=${pre_exti}` // new URL
         );
       }
       formData.append('messages', JSON.stringify(messages));
