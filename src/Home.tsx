@@ -644,17 +644,15 @@ return (
                 )}
               </>
             ) : (
-              <div>
-                {image.length > 0 ? (
-                  <div className="get-started">
-                    &lt;&gt;generating code...&lt;/&gt;
-                  </div>
-                ) : (
-                  <div className="get-started">
-                    &lt;&gt;upload an image to get started&lt;/&gt;
-                  </div>
-                )}
-              </div>
+              image.length > 0 ? (
+                <div className="get-started">
+                  &lt;&gt;generating code...&lt;/&gt;
+                </div>
+              ) : (
+                <div className="get-started">
+                  &lt;&gt;upload an image to get started&lt;/&gt;
+                </div>
+              )
             )}
           </div>
         </div>
