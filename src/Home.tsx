@@ -561,7 +561,7 @@ return (
             </button>
           </a>
           <div className="intro-text">
-            <h2>Transform Mockups into Code</h2>
+            <h2>Transform Mocks into Code</h2>
             <p>
               Mokzu turns design mocks into functional React components effortlessly. Simply capture any area on your screen and Mokzu converts it into code. Streamline your design-to-code process and boost productivity.
             </p>
