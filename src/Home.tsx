@@ -551,7 +551,7 @@ npm i tailwindcss @remixicon/react daisyui
 `;
 
     const asciiBox = createAsciiBox(install_comment);
-    navigator.clipboard.writeText(asciiBox + errorProof(code))
+    navigator.clipboard.writeText(asciiBox + code)
       .then(() => {
         setTimeout(() => {
           copyBtnRef.current.innerHTML = '📋';
