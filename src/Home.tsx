@@ -632,6 +632,7 @@ return (
           </div>
           {image.length > 0 && (
             <div className="image-card">
+              Mock used
               <img src={image} alt="Selected" />
             </div>
           )}
