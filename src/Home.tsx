@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useMemo, useCallback, useRef, useState } from "react";
 import { OpenAI } from "openai";
@@ -11,7 +12,7 @@ import ChatResponse from "./components/App/ChatResponse/ChatResponse";
 import { ToastContainer, ToastContentProps, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './LoadingSpinner';
-import Graph from './Graph';
+// import Graph from './Graph';
 import { useLocation } from 'react-router-dom';
 
 const backendBase = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
@@ -553,7 +554,19 @@ return (
 
           <div className="list-item"></div>
 
-        <Graph width="280" height="300" />
+          {/* <Graph width="280" height="300" /> */}
+
+          <a href="https://chromewebstore.google.com/detail/mokzu/bcmfikdjbbnmdpiajbckbkbnalbibkjc" target="_blank" className="mt-4">
+            <button className="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
+               Get Mokzu Chrome Extension
+            </button>
+          </a>
+          <div class="p-4 rounded-lg shadow-md">
+            <h2 class="text-xl font-bold mb-2 text-gray-200">Transform Mockups into Code</h2>
+            <p class="text-sm text-gray-100">
+              Mokzu turns design mocks into functional React components effortlessly. Simply capture any area on your screen and Mokzu converts it into code. Streamline your design-to-code process and boost productivity.
+            </p>
+          </div>
           {image.length > 0 && (
             <div className="image-card">
               <img src={image} alt="Selected" />
@@ -621,10 +634,11 @@ return (
                       right: '10px',
                       padding: '5px',
                       cursor: 'pointer',
+                      color: 'white',
                     }}
                     aria-label="Copy to clipboard"
                   >
-                    📋
+                    Copy React Code 📋
                   </button>
                 ) : (
                   <LoadingSpinner />

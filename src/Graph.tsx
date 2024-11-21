@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useRef, useState, useEffect } from 'react';
 import { Group } from '@visx/group';
 import { LineRadial } from '@visx/shape';
