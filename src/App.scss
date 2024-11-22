@@ -549,6 +549,23 @@ textarea {
   .mobile-sample-mock {
     display: block !important;
   }
+  .contact-us {
+    bottom: 60px !important;
+  }
+}
+.contact-us {
+  position: fixed;
+  bottom: 3px;
+  right: 3px;
+}
+.contact-us button {
+  border-radius: 60px;  
+  width: 45px;
+  font-size: 1.9em;
+  background: rgba(0,0,0,0.3);
+}
+.contact-us button span {
+  margin-left: -16px;
 }
 
 .upgrade-button {

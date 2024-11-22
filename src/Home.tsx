@@ -767,6 +767,11 @@ return (
             </div>
         </div> : null }
     </div>
+      <a alt="Contact us" className="contact-us" href="mailto:hi@mokzu.com" target="_blank">
+        <button title="Contact us">
+          <span>👋</span>
+        </button>
+      </a>
     </>
   );
 }
