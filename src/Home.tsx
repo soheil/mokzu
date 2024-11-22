@@ -684,9 +684,21 @@ return (
             <div key={`chat-${index}`}>
               <ChatResponse item={item} index={index} />
               {index === 0 && (
-                <div className="generate-button" onClick={() => handleAddImage()}>
-                  <span>Add Image</span>
-                </div>
+                <>
+                  <div className="generate-button" onClick={() => handleAddImage()}>
+                    <span>Add Image</span>
+                  </div>
+                  <div className="sample-mock">
+                    <p className="text-or-line">or choose a sample mock</p>
+                    <div className="image-card">
+                      {SAMPLES.map((sample) => (
+                        <button key={sample} onClick={() => window.location.href = `/?exti=${sample}`}>
+                          <img src={`https://mokzu.com/mokzu-api/uploads/${sample}`} alt={`Sample mock ${sample}`} />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </>
               )}
               {index === 1 && image.length > 0 && (
                 <div className="image-card">
