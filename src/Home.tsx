@@ -23,7 +23,7 @@ const SAMPLES = [
   'i1732232393245.png',
   'i1732232793938.png',
   'i1732232937891.png',
-]
+];
 
 const backendBase = window.location.hostname === 'localhost' ? 'http://localhost:8085' : '';
 const notify = (message: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | ((props: ToastContentProps<unknown>) => React.ReactNode) | null | undefined, type: string) => {
