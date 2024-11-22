@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './LoadingSpinner';
 // import Graph from './Graph';
 import { useLocation } from 'react-router-dom';
+import UpgradeButton from "./UpgradeButton";
 
 const SAMPLES = [
   'i1732224325886.png',
@@ -590,6 +591,10 @@ npm i tailwindcss @remixicon/react daisyui
   ];
 
 return (
+    <>
+    <div className="mobile-button">
+      <UpgradeButton />
+    </div>
     <div className="container chat-container">
       <ToastContainer
         position="top-right"
@@ -668,6 +673,7 @@ return (
         <div className="generate-button generate-button-sidebar" onClick={() => handleAddImage()}>
           <span>Add Image</span>
         </div>
+        <UpgradeButton />
       </div>
       <div className="chat-history" onClick={() => setMobileMenuActive(false)}>
 
@@ -748,6 +754,7 @@ return (
             </div>
         </div> : null }
     </div>
+    </>
   );
 }
 
