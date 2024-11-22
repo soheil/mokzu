@@ -651,7 +651,7 @@ return (
               <img src={image} alt="Selected" />
             </div>
           ) : (
-            <div className="sample-mock">
+            <div className="sample-mock mobile-sample-mock">
               <div className="image-card">
                 <span>Choose a sample mock</span>
                 {SAMPLES.map((sample) => (

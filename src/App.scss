@@ -531,6 +531,9 @@ textarea {
   border-top: 0.5px solid #999;
   margin: 0 10px;
 }
+.mobile-sample-mock {
+  display: none;
+}
 @media screen and (max-width: 900px) {
   .sample-mock .image-card button {
     width: 16% !important;
@@ -542,6 +545,9 @@ textarea {
   }
   .chat-container .chat-history .chat-history-content {
     height: 35vh !important;
+  }
+  .mobile-sample-mock {
+    display: block !important;
   }
 }
 
