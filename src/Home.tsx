@@ -655,7 +655,7 @@ return (
               <div className="image-card">
                 <span>Choose a sample mock</span>
                 {SAMPLES.map((sample) => (
-                  <button key={sample} onClick={() => setImage(`/mokzu-api/uploads/${sample}`)}>
+                  <button key={sample} onClick={() => window.location.href = `/mokzu-api/uploads/${sample}`}>
                     <img src={`https://mokzu.com/mokzu-api/uploads/${sample}`} alt={`Sample mock ${sample}`} />
                   </button>
                 ))}
