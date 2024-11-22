@@ -532,7 +532,7 @@ textarea {
   margin: 0 10px;
 }
 .mobile-sample-mock {
-  display: none;
+  display: none !important;
 }
 @media screen and (max-width: 900px) {
   .sample-mock .image-card button {

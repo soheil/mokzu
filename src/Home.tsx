@@ -651,7 +651,7 @@ return (
               <img src={image} alt="Selected" />
             </div>
           ) : (
-            <div className="sample-mock mobile-sample-mock">
+            <div className="sample-mock">
               <div className="image-card">
                 <span>Choose a sample mock</span>
                 {SAMPLES.map((sample) => (
@@ -688,7 +688,7 @@ return (
                   <div className="generate-button" onClick={() => handleAddImage()}>
                     <span>Add Image</span>
                   </div>
-                  <div className="sample-mock">
+                  <div className="sample-mock mobile-sample-mock">
                     <p className="text-or-line">or choose a sample mock</p>
                     <div className="image-card">
                       {SAMPLES.map((sample) => (
