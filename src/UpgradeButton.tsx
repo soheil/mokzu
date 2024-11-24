@@ -22,7 +22,7 @@ import React from 'react';
 const stripeLink = 'https://buy.stripe.com/9AQ4h478lgMs6l2bIK';
 const UpgradeButton = () => {
   return (
-    <a className="upgrade-button generate-button glass-button" href={stripeLink} target="_blank">
+    <a className="upgrade-button generate-button glass-button mb-2" href={stripeLink} target="_blank">
       <span>Upgrade to Premium
         <svg
           width="32"
