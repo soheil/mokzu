@@ -800,3 +800,23 @@ span.response-content img {
 .top-indicator svg, .bottom-indicator svg {
   cursor: pointer;
 }
+
+
+.instagram-link {
+  position: fixed;
+  bottom: 85px;
+  right: 20px;
+}
+
+.instagram-link img {
+  width: 35px;
+  height: 35px;
+  margin-left: -3px;
+  color: white;
+}
+
+@media screen and (max-width: 900px) {
+  .instagram-link {
+    bottom: 140px;
+  }
+}

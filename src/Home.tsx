@@ -4,6 +4,7 @@ import React, { useEffect, useMemo, useCallback, useRef, useState } from "react"
 import { OpenAI } from "openai";
 import "./App.scss";
 import GenericLogo from './assets/generic-logo.png';
+import Insta from './assets/insta.svg';
 import MenuItem from "./components/App/MenuItem/MenuItem";
 import PromptInput from "./components/App/PromptInput/PromptInput";
 import FoxModal from "./components/App/FoxModal/FoxModal";
@@ -771,6 +772,9 @@ return (
         <button title="Contact us">
           <span>👋</span>
         </button>
+      </a>
+      <a alt="Instagram" className="instagram-link" href="https://www.instagram.com/mokzuapp/" target="_blank">
+        <img src={Insta} alt="Instagram profile" />
       </a>
     </>
   );
