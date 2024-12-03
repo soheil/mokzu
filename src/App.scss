@@ -240,7 +240,7 @@ code {
 
     @media screen and (max-width: 900px) {
       // min-height: 95vh;
-      margin-top: 60px;
+      margin-top: 68px;
     }
 
     @media screen and (max-width: 720px) {
@@ -278,7 +278,7 @@ code {
       width: 100%;
       /*max-height: calc(100vh - 320px);*/
       max-height: calc(100vh - 225px);
-      height: 50vh;
+      height: 47vh;
       overflow: auto;
       display: flex;
       flex-direction: column;
@@ -331,6 +331,8 @@ code {
       left: 0;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+      min-height: auto;
+      z-index: 1;
     }
 
     .promptInnerBox {
@@ -571,6 +573,10 @@ textarea {
 .upgrade-button {
   margin: 0 12px auto !important;
 }
+.upgrade-button svg {
+  margin-bottom: -4px;
+  margin-left: 4px;
+}
 .glass-button {
   background: rgba(255, 255, 255, 0.2) !important;
   border: none;
@@ -579,8 +585,8 @@ textarea {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   color: white;
-  font-size: 16px;
-  padding: 10px 20px;
+  font-size: 14px;
+  padding: 10px 30px !important;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s !important;
   background-image: linear-gradient(135deg, rgba(128, 0, 128, 0.3), rgba(0, 0, 255, 0.3)) !important;
