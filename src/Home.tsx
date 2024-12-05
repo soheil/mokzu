@@ -3,7 +3,8 @@
 import React, { useEffect, useMemo, useCallback, useRef, useState } from "react";
 import { OpenAI } from "openai";
 import "./App.scss";
-import GenericLogo from './assets/generic-logo.png';
+import GenericLogo from './assets/logo.png';
+import GenericLogoText from './assets/logo-text.png';
 import Insta from './assets/insta.svg';
 import MenuItem from "./components/App/MenuItem/MenuItem";
 import PromptInput from "./components/App/PromptInput/PromptInput";
@@ -616,14 +617,14 @@ return (
       <span className="menu-icon">
         <div className="logo-header">
           <a href="/" className="logo-icon"><img src={GenericLogo} /></a>
-          <a href="/" style={{ verticalAlign: 'super', color: 'white' }}>Mokzu</a>
+          <a href="/" className="logo-icon"><img src={GenericLogoText} /></a>
         </div>
       </span>
       <div className={`chat-sidebar mobile-menu ${mobileMenuActive ? 'menu-active' : ''}`}>
         <span className="close-icon" onClick={() => setMobileMenuActive(false)}>+</span>
         <div className="chat-header">
           <a href="/" className="logo-icon"><img src={GenericLogo} /></a>
-          <a href="/">Mokzu</a>
+          <a href="/" className="logo-icon"><img src={GenericLogoText} /></a>
         </div>
         <div className="list-item-wrap">
           {false && listGroup && listGroup.length > 0 && listGroup.map((val: any, index: number) => (
