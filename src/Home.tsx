@@ -729,12 +729,12 @@ return (
             handleSubmit={handleSubmit} />
 
           <div className="comp">
-            {1||ecomponentCode.length > 0 ? (
+            {ecomponentCode.length > 0 ? (
               <>
                 <iframe
                   style={{ display: isGenerated ? 'block' : 'none' }} ref={iframeRef}
                 />
-                {true ? (
+                {isGenerated ? (
                   <>
                     <button
                       ref={copyBtnRef}
