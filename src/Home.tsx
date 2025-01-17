@@ -558,6 +558,10 @@ ${name} = ${name} || (() => {});
     );
   }
 
+  const hostSite = (code) => {
+    window.open(iframeRef.current.src)
+  };
+
   const handleCopy = (code) => {
     copyBtnRef.current.innerHTML = '✅';
     const install_comment = `
@@ -642,9 +646,9 @@ return (
             </button>
           </a>
           <div className="intro-text">
-            <h2>Transform Mocks into Code</h2>
+            <h2>Auto-Generate an App from a Design Mockup</h2>
             <p>
-              Mokzu turns design mocks into functional React components effortlessly. Simply capture any area on your screen and Mokzu converts it into code. Streamline your design-to-code process and boost productivity.
+              Create and host an app instantly by uploading an image of what the app should look like. Mokzu will generate and host the app in seconds.
             </p>
           </div>
           {image.length > 0 ? (
@@ -725,27 +729,43 @@ return (
             handleSubmit={handleSubmit} />
 
           <div className="comp">
-            {componentCode.length > 0 ? (
+            {1||ecomponentCode.length > 0 ? (
               <>
                 <iframe
                   style={{ display: isGenerated ? 'block' : 'none' }} ref={iframeRef}
                 />
-                {isGenerated ? (
-                  <button
-                    ref={copyBtnRef}
-                    onClick={() => handleCopy(componentCode)}
-                    style={{
-                      position: 'absolute',
-                      top: '10px',
-                      right: '10px',
-                      padding: '5px',
-                      cursor: 'pointer',
-                      color: 'white',
-                    }}
-                    aria-label="Copy to clipboard"
-                  >
-                    Copy React Code 📋
-                  </button>
+                {true ? (
+                  <>
+                    <button
+                      ref={copyBtnRef}
+                      onClick={() => handleCopy(componentCode)}
+                      style={{
+                        position: 'absolute',
+                        top: '10px',
+                        right: '10px',
+                        padding: '9px',
+                        cursor: 'pointer',
+                        color: 'white',
+                      }}
+                      aria-label="Copy to clipboard"
+                    >
+                      📋 Copy Code
+                    </button>
+                    <button
+                      onClick={() => hostSite(componentCode)}
+                      style={{
+                        position: 'absolute',
+                        top: '10px',
+                        right: '10px',
+                        padding: '9px',
+                        cursor: 'pointer',
+                        color: 'white',
+                      }}
+                      aria-label="Open Page"
+                    >
+                      💎 Open Page &gt;
+                    </button>
+                  </>
                 ) : (
                   <LoadingSpinner />
                 )}
@@ -757,7 +777,7 @@ return (
                 </div>
               ) : (
                 <div className="get-started">
-                  &lt;&gt;upload an image to get started&lt;/&gt;
+                  <span className="big-font">&lt;&gt; upload an image to get started &lt;/&gt;</span>
                 </div>
               )
             )}
