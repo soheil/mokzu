@@ -674,7 +674,7 @@ return (
           className="hidden"
         />
         <div className="generate-button generate-button-sidebar" onClick={() => handleAddImage()}>
-          <span>Add Image</span>
+          <span>Upload Image</span>
         </div>
         <UpgradeButton />
       </div>
@@ -688,7 +688,7 @@ return (
               {index === 0 && (
                 <>
                   <div className="generate-button" onClick={() => handleAddImage()}>
-                    <span>Add Image</span>
+                    <span>Upload Image</span>
                   </div>
                   <div className="sample-mock mobile-sample-mock">
                     <p className="text-or-line">or choose a sample mock</p>
