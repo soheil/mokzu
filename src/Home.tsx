@@ -207,11 +207,13 @@ function App() {
       });
 
       console.log('generated component on the backend');
+      const jsonData = await response.json();
+      console.log(jsonData);
       if (iframeRef.current) {
-      console.log('>>>generated component on the backend');
-        const random = '?a=' + (Math.random() % 10000).toString();
+        // const random = '?a=' + (Math.random() % 10000).toString();
         // iframeRef.current.src = `${backendBase}/mokzu-api/sites/app1/${random}`;
-        iframeRef.current.src = `${backendBase}/mokzu-app1/${random}`;
+        // iframeRef.current.src = `${backendBase}/mokzu-app1/${random}`;
+        iframeRef.current.src = jsonData.url;
         setIsGenerated(true);
 
         console.log(iframeRef.current.src);
