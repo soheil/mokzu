@@ -775,7 +775,7 @@ return (
             ) : (
               image.length > 0 ? (
                 <div className="get-started">
-                  &lt;&gt;generating code...&lt;/&gt;
+                  <span className="big-font">&lt;&gt;generating code...&lt;/&gt;</span>
                 </div>
               ) : (
                 <div className="get-started">
